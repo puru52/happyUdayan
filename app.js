@@ -31,6 +31,7 @@ window.onload = function () {
     }
 }
 
+
 function dragStart() {
     currTile = this; //refers to image tile being dragged
 }
@@ -77,4 +78,28 @@ function dragEnd() {
         turns++;
         document.getElementById("turns").innerText = turns;
     }
+
+    if (isFinished()) {
+        console.log("FINISHED");
+        confetti.start();
+        var audio = new Audio('audio.mp3');
+        audio.play();
+    }
+
 }
+
+function isFinished() {
+    let img1 = document.getElementById("0-0").getAttribute('src') == 'https://puru52.github.io/happyUdayan/content/9.png';
+    let img2 = document.getElementById("0-1").getAttribute('src') == 'https://puru52.github.io/happyUdayan/content/8.png';
+    let img3 = document.getElementById("0-2").getAttribute('src') == 'https://puru52.github.io/happyUdayan/content/3.png';
+    let img4 = document.getElementById("1-0").getAttribute('src') == 'https://puru52.github.io/happyUdayan/content/6.png';
+    let img5 = document.getElementById("1-1").getAttribute('src') == 'https://puru52.github.io/happyUdayan/content/5.png';
+    let img6 = document.getElementById("1-2").getAttribute('src') == 'https://puru52.github.io/happyUdayan/content/4.png';
+    let img7 = document.getElementById("2-2").getAttribute('src') == 'https://puru52.github.io/happyUdayan/content/1.png';
+    /*     let img8 = document.getElementById("2-1").getAttribute('src') == './content/2.png';
+     */
+    if (img1 && img2 && img3 && img4 && img5 && img6 && img7 /*  && img8  */) {
+        return true;
+    }
+}
+
